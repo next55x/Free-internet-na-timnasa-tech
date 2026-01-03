@@ -67,7 +67,7 @@
         .link-item i { font-size: 18px; width: 30px; margin-right: 10px; text-align: center; }
         .link-item:hover { background: rgba(0, 242, 254, 0.2); border-color: #00f2fe; transform: scale(1.02); }
 
-        /* GitHub Info Section */
+        /* GitHub Section */
         .github-card {
             margin-top: 25px;
             padding: 15px;
@@ -77,14 +77,17 @@
             text-align: left;
             font-size: 13px;
         }
-        .github-card h3 { font-size: 14px; margin-bottom: 8px; color: #00f2fe; text-align: center; }
-        .repo-stats { display: flex; justify-content: space-around; margin-top: 10px; }
+        .repo-stats { display: flex; justify-content: space-around; margin: 10px 0; }
+        .deploy-btn {
+            display: block; background: #6762a6; color: white; text-align: center;
+            padding: 8px; border-radius: 8px; text-decoration: none; font-weight: bold;
+            margin-top: 10px; font-size: 12px;
+        }
 
         /* Icon Colors */
         .fa-whatsapp { color: #25D366; } .fa-youtube { color: #FF0000; }
         .fa-instagram { color: #E4405F; } .fa-tiktok { color: #fff; }
-        .fa-server { color: #a29bfe; } .fa-cloud { color: #00d2ff; }
-        .fa-key { color: #FFD700; } .fa-github { color: #fff; }
+        .fa-key { color: #FFD700; } .fa-server { color: #a29bfe; }
     </style>
 </head>
 <body>
@@ -101,7 +104,10 @@
     </div>
 
     <div class="links-wrapper">
-        <a href="https://wa.me/255784766591" class="link-item"><i class="fab fa-whatsapp"></i> WhatsApp Me</a>
+        <a href="https://wa.me/255784766591" class="link-item"><i class="fab fa-whatsapp"></i> WhatsApp Owner</a>
+        <a href="#" class="link-item"><i class="fas fa-bullhorn"></i> WhatsApp Channel</a>
+        <a href="https://t.me/+Joa6RCWPQAo3ZGVk" class="link-item"><i class="fas fa-users"></i> WhatsApp Group</a>
+
         <a href="https://timnasa-happ-new-year-2026.onrender.com" class="link-item"><i class="fas fa-key"></i> Get Pairing Code</a>
         <a href="https://youtube.com/@timnasa-tech" class="link-item"><i class="fab fa-youtube"></i> YouTube Channel</a>
         <a href="https://www.tiktok.com/@timnasa.tech.com" class="link-item"><i class="fab fa-tiktok"></i> TikTok Profile</a>
@@ -110,48 +116,40 @@
         <a href="#" class="link-item"><i class="fas fa-server"></i> Control Panel</a>
         <a href="#" class="link-item"><i class="fas fa-cloud"></i> Cloud Service</a>
         
-        <a href="https://t.me/+Joa6RCWPQAo3ZGVk" class="link-item"><i class="fab fa-telegram"></i> Telegram Group</a>
         <a href="tel:+255784766591" class="link-item"><i class="fas fa-phone"></i> Phone Service</a>
     </div>
 
-    <div class="github-card" id="repoInfo">
-        <h3><i class="fab fa-github"></i> Project: TIMNASA_TMD1</h3>
-        <p id="repoDesc">Loading repository details...</p>
+    <div class="github-card">
+        <h3 style="text-align: center; color: #00f2fe;"><i class="fab fa-github"></i> TIMNASA_TMD1</h3>
+        <p id="repoDesc" style="margin-top: 5px;">Loading...</p>
         <div class="repo-stats">
-            <span><i class="fas fa-star" style="color: gold;"></i> <span id="starsCount">0</span></span>
-            <span><i class="fas fa-code-branch"></i> <span id="forksCount">0</span></span>
-            <span><i class="fas fa-code"></i> <span id="repoLang">...</span></span>
+            <span>⭐ <span id="starsCount">0</span></span>
+            <span>🍴 <span id="forksCount">0</span></span>
+            <span>💻 <span id="repoLang">...</span></span>
         </div>
+        <a href="https://www.heroku.com/deploy/?template=https://github.com/Next5x/TIMNASA_TMD1" class="deploy-btn">DEPLOY TO HEROKU</a>
     </div>
 </div>
 
 <script>
-    // Music Player Logic
     let song = document.getElementById("song");
     let ctrlIcon = document.getElementById("ctrlIcon");
     let playBtn = document.getElementById("playBtn");
-    let songStatus = document.getElementById("songStatus");
 
     playBtn.onclick = () => {
-        if (song.paused) { song.play(); ctrlIcon.className = "fas fa-pause"; songStatus.innerText = "Inacheza..."; }
-        else { song.pause(); ctrlIcon.className = "fas fa-play"; songStatus.innerText = "Imesimama"; }
+        if (song.paused) { song.play(); ctrlIcon.className = "fas fa-pause"; }
+        else { song.pause(); ctrlIcon.className = "fas fa-play"; }
     };
 
-    // GitHub API Script for TIMNASA_TMD1
     async function fetchRepoData() {
         try {
-            const response = await fetch('https://api.github.com/repos/Next5x/TIMNASA_TMD1');
-            const data = await response.json();
-            
-            if(data.name) {
-                document.getElementById('repoDesc').innerText = data.description || "No description provided.";
-                document.getElementById('starsCount').innerText = data.stargazers_count;
-                document.getElementById('forksCount').innerText = data.forks_count;
-                document.getElementById('repoLang').innerText = data.language || "N/A";
-            }
-        } catch (error) {
-            document.getElementById('repoDesc').innerText = "Error loading GitHub details.";
-        }
+            const res = await fetch('https://api.github.com/repos/Next5x/TIMNASA_TMD1');
+            const data = await res.json();
+            document.getElementById('repoDesc').innerText = data.description || "Official WhatsApp Bot Repo.";
+            document.getElementById('starsCount').innerText = data.stargazers_count;
+            document.getElementById('forksCount').innerText = data.forks_count;
+            document.getElementById('repoLang').innerText = data.language || "JS";
+        } catch (e) { console.log(e); }
     }
     fetchRepoData();
 </script>

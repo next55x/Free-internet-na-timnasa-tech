@@ -6,7 +6,9 @@
     <title>TIMNASA TECH | Official Links</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        /* --- MUONEKANO (CSS) --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         body {
             font-family: 'Poppins', sans-serif;
             background: #050505 url('https://files.catbox.moe/zm113g.jpg') no-repeat center center fixed;
@@ -16,6 +18,7 @@
             justify-content: center;
             min-height: 100vh;
         }
+
         .container {
             width: 100%;
             max-width: 450px;
@@ -26,68 +29,88 @@
             min-height: 100vh;
             overflow-y: auto;
         }
+
         .profile-img {
-            width: 110px; height: 110px;
+            width: 115px; height: 115px;
             border-radius: 50%;
             border: 3px solid #00f2fe;
             box-shadow: 0 0 20px #00f2fe;
             margin-bottom: 10px;
             object-fit: cover;
         }
-        h1 { font-size: 20px; text-transform: uppercase; letter-spacing: 2px; }
-        .bio-text { color: #00f2fe; font-size: 12px; margin-bottom: 20px; font-weight: bold; }
+
+        h1 { font-size: 22px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 5px; }
+        .bio-text { color: #00f2fe; font-size: 13px; margin-bottom: 20px; font-weight: bold; }
 
         /* Music Player */
         .player-box {
             background: rgba(255, 255, 255, 0.1);
-            padding: 8px 20px;
+            padding: 10px 20px;
             border-radius: 50px;
             display: inline-flex;
             align-items: center;
             gap: 15px;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             border: 1px solid rgba(0, 242, 254, 0.4);
         }
         .play-btn {
             background: #00f2fe; color: #000; border: none;
-            width: 35px; height: 35px; border-radius: 50%;
+            width: 38px; height: 38px; border-radius: 50%;
             cursor: pointer; display: flex; align-items: center; justify-content: center;
+            font-size: 18px;
         }
 
-        /* Buttons */
-        .links-wrapper { display: flex; flex-direction: column; gap: 10px; }
+        /* Buttons Layout */
+        .links-wrapper { display: flex; flex-direction: column; gap: 12px; }
+        
         .link-item {
-            display: flex; align-items: center; padding: 12px 20px;
+            display: flex; align-items: center; padding: 14px 22px;
             text-decoration: none; color: white;
             background: rgba(255, 255, 255, 0.08);
             border: 1px solid rgba(255, 255, 255, 0.15);
             border-radius: 50px; font-weight: 500;
-            transition: 0.3s; font-size: 14px;
+            transition: 0.3s ease; font-size: 15px;
         }
-        .link-item i { font-size: 18px; width: 30px; margin-right: 10px; text-align: center; }
-        .link-item:hover { background: rgba(0, 242, 254, 0.2); border-color: #00f2fe; transform: scale(1.02); }
+
+        .link-item i { font-size: 20px; width: 35px; text-align: center; margin-right: 12px; }
+
+        .link-item:hover {
+            background: rgba(0, 242, 254, 0.2);
+            border-color: #00f2fe;
+            transform: scale(1.03);
+            box-shadow: 0 0 15px rgba(0, 242, 254, 0.3);
+        }
 
         /* GitHub Section */
         .github-card {
-            margin-top: 25px;
-            padding: 15px;
+            margin-top: 30px;
+            padding: 20px;
             background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
+            border-radius: 20px;
             border: 1px dashed #00f2fe;
             text-align: left;
-            font-size: 13px;
         }
-        .repo-stats { display: flex; justify-content: space-around; margin: 10px 0; }
+        .repo-stats { display: flex; justify-content: space-around; margin: 15px 0; font-size: 14px; }
         .deploy-btn {
             display: block; background: #6762a6; color: white; text-align: center;
-            padding: 8px; border-radius: 8px; text-decoration: none; font-weight: bold;
-            margin-top: 10px; font-size: 12px;
+            padding: 10px; border-radius: 10px; text-decoration: none; font-weight: bold;
+            font-size: 13px; transition: 0.3s;
         }
+        .deploy-btn:hover { background: #534ea3; box-shadow: 0 0 10px #6762a6; }
 
         /* Icon Colors */
-        .fa-whatsapp { color: #25D366; } .fa-youtube { color: #FF0000; }
-        .fa-instagram { color: #E4405F; } .fa-tiktok { color: #fff; }
-        .fa-key { color: #FFD700; } .fa-server { color: #a29bfe; }
+        .fa-whatsapp { color: #25D366; }
+        .fa-bullhorn { color: #128C7E; } /* Channel */
+        .fa-users { color: #25D366; }    /* Group */
+        .fa-key { color: #FFD700; }
+        .fa-youtube { color: #FF0000; }
+        .fa-tiktok { color: #fff; }
+        .fa-instagram { color: #E4405F; }
+        .fa-facebook { color: #1877F2; }
+        .fa-server { color: #a29bfe; }
+        .fa-cloud { color: #00d2ff; }
+        .fa-phone { color: #00ff00; }
+        .fa-heroku { color: #6762a6; }
     </style>
 </head>
 <body>
@@ -99,7 +122,7 @@
 
     <div class="player-box">
         <button class="play-btn" id="playBtn"><i class="fas fa-play" id="ctrlIcon"></i></button>
-        <span id="songStatus" style="font-size: 12px;">Cheza Muziki</span>
+        <span id="songStatus" style="font-size: 13px;">Cheza Muziki</span>
         <audio id="song"><source src="https://files.catbox.moe/lc98ly.mp3" type="audio/mpeg"></audio>
     </div>
 
@@ -107,49 +130,56 @@
         <a href="https://wa.me/255784766591" class="link-item"><i class="fab fa-whatsapp"></i> WhatsApp Owner</a>
         <a href="#" class="link-item"><i class="fas fa-bullhorn"></i> WhatsApp Channel</a>
         <a href="https://t.me/+Joa6RCWPQAo3ZGVk" class="link-item"><i class="fas fa-users"></i> WhatsApp Group</a>
-
         <a href="https://timnasa-happ-new-year-2026.onrender.com" class="link-item"><i class="fas fa-key"></i> Get Pairing Code</a>
         <a href="https://youtube.com/@timnasa-tech" class="link-item"><i class="fab fa-youtube"></i> YouTube Channel</a>
-        <a href="https://www.tiktok.com/@timnasa.tech.com" class="link-item"><i class="fab fa-tiktok"></i> TikTok Profile</a>
-        
-        <a href="https://dashboard.heroku.com" class="link-item"><i class="fa-brands fa-heroku" style="color: #6762a6;"></i> Heroku Dashboard</a>
+        <a href="https://www.tiktok.com/@timnasa.tech.com" class="link-item"><i class="fab fa-tiktok"></i> TikTok Page</a>
+        <a href="https://www.instagram.com/tanzania_mipakani" class="link-item"><i class="fab fa-instagram"></i> Instagram</a>
+        <a href="https://dashboard.heroku.com" class="link-item"><i class="fab fa-heroku"></i> Heroku Dashboard</a>
         <a href="#" class="link-item"><i class="fas fa-server"></i> Control Panel</a>
         <a href="#" class="link-item"><i class="fas fa-cloud"></i> Cloud Service</a>
-        
         <a href="tel:+255784766591" class="link-item"><i class="fas fa-phone"></i> Phone Service</a>
     </div>
 
     <div class="github-card">
-        <h3 style="text-align: center; color: #00f2fe;"><i class="fab fa-github"></i> TIMNASA_TMD1</h3>
-        <p id="repoDesc" style="margin-top: 5px;">Loading...</p>
+        <h3 style="text-align: center; color: #00f2fe; font-size: 16px;"><i class="fab fa-github"></i> Project: TIMNASA_TMD1</h3>
+        <p id="repoDesc" style="margin-top: 10px; font-size: 13px; color: #ccc;">Loading repository details...</p>
         <div class="repo-stats">
-            <span>⭐ <span id="starsCount">0</span></span>
-            <span>🍴 <span id="forksCount">0</span></span>
-            <span>💻 <span id="repoLang">...</span></span>
+            <span>⭐ <span id="starsCount">0</span> Stars</span>
+            <span>🍴 <span id="forksCount">0</span> Forks</span>
         </div>
-        <a href="https://www.heroku.com/deploy/?template=https://github.com/Next5x/TIMNASA_TMD1" class="deploy-btn">DEPLOY TO HEROKU</a>
+        <a href="https://www.heroku.com/deploy/?template=https://github.com/Next5x/TIMNASA_TMD1" class="deploy-btn">
+            <i class="fab fa-heroku"></i> DEPLOY TO HEROKU
+        </a>
     </div>
 </div>
 
 <script>
+    /* JavaScript kwa Music Player */
     let song = document.getElementById("song");
     let ctrlIcon = document.getElementById("ctrlIcon");
     let playBtn = document.getElementById("playBtn");
 
     playBtn.onclick = () => {
-        if (song.paused) { song.play(); ctrlIcon.className = "fas fa-pause"; }
-        else { song.pause(); ctrlIcon.className = "fas fa-play"; }
+        if (song.paused) {
+            song.play();
+            ctrlIcon.className = "fas fa-pause";
+        } else {
+            song.pause();
+            ctrlIcon.className = "fas fa-play";
+        }
     };
 
+    /* GitHub API Script */
     async function fetchRepoData() {
         try {
             const res = await fetch('https://api.github.com/repos/Next5x/TIMNASA_TMD1');
             const data = await res.json();
-            document.getElementById('repoDesc').innerText = data.description || "Official WhatsApp Bot Repo.";
-            document.getElementById('starsCount').innerText = data.stargazers_count;
-            document.getElementById('forksCount').innerText = data.forks_count;
-            document.getElementById('repoLang').innerText = data.language || "JS";
-        } catch (e) { console.log(e); }
+            if(data.name) {
+                document.getElementById('repoDesc').innerText = data.description || "Official WhatsApp Bot Repository.";
+                document.getElementById('starsCount').innerText = data.stargazers_count;
+                document.getElementById('forksCount').innerText = data.forks_count;
+            }
+        } catch (e) { console.error("GitHub API Error"); }
     }
     fetchRepoData();
 </script>
